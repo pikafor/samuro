@@ -5,8 +5,8 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
 
-    <include file="db/changelog/create/changes/Create_User_Table.xml"/>
-    <include file="db/changelog/create/changes/Create_Product_Table.xml"/>
-    <include file="db/changelog/create/changes/Create_Order_Table.xml"/>
-    <include file="db/changelog/create/changes/Create_Comment_Table.xml"/>
+    <include file="db/changelog/changes/delete/Delete_Order_Table.xml"/>
+    <include file="db/changelog/changes/delete/Delete_Comment_Table.xml"/>
+    <include file="db/changelog/changes/delete/Delete_Product_Table.xml"/>
+    <include file="db/changelog/changes/delete/Delete_User_Table.xml"/>
 </databaseChangeLog>
