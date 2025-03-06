@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.21.xsd">
+
+    <changeSet id="Create_Order_Table" author="samuro">
+        <createTable tableName="orders">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="seller_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="buyer_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint
+                baseTableName="orders"
+                baseColumnNames="seller_id"
+                constraintName="fk_order_seller"
+                referencedTableName="users"
+                referencedColumnNames="id"/>
+        <addForeignKeyConstraint
+                baseTableName="orders"
+                baseColumnNames="buyer_id"
+                constraintName="fk_order_buyer"
+                referencedTableName="users"
+                referencedColumnNames="id"/>
+        <addForeignKeyConstraint
+                baseTableName="orders"
+                baseColumnNames="product_id"
+                constraintName="fk_order_product"
+                referencedTableName="product"
+                referencedColumnNames="id"/>
+    </changeSet>
+</databaseChangeLog>

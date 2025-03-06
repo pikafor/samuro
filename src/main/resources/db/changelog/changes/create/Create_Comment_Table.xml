@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.21.xsd">
+
+    <changeSet id="Create_Comment_Table" author="samuro">
+        <createTable tableName="comment">
+            <column name="id" type="UUID">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="text" type="TEXT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="author_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <!-- Добавляем внешние ключи -->
+        <addForeignKeyConstraint
+                baseTableName="comment"
+                baseColumnNames="author_id"
+                constraintName="fk_comment_author"
+                referencedTableName="users"
+                referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint
+                baseTableName="comment"
+                baseColumnNames="product_id"
+                constraintName="fk_comment_product"
+                referencedTableName="product"
+                referencedColumnNames="id"/>
+    </changeSet>
+</databaseChangeLog>
