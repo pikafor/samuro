@@ -3,7 +3,11 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.21.xsd">
 
-    <changeSet id="Delete_Order_Table" author="samuro">
-        <dropTable tableName="orders"/>
+    <changeSet id="V1.0_Create_Role_Column_For_User" author="samuro">
+        <addColumn tableName="users">
+            <column name="role" type="VARCHAR(30)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
     </changeSet>
 </databaseChangeLog>

@@ -3,34 +3,37 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.21.xsd">
 
-    <changeSet id="Create_Comment_Table" author="samuro">
-        <createTable tableName="comment">
+    <changeSet id="V1.0_Create_Order_Table" author="samuro">
+        <createTable tableName="orders">
             <column name="id" type="UUID">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="text" type="TEXT">
+            <column name="seller_id" type="UUID">
                 <constraints nullable="false"/>
             </column>
-            <column name="author_id" type="UUID">
+            <column name="buyer_id" type="UUID">
                 <constraints nullable="false"/>
             </column>
             <column name="product_id" type="UUID">
                 <constraints nullable="false"/>
             </column>
         </createTable>
-
-        <!-- Добавляем внешние ключи -->
         <addForeignKeyConstraint
-                baseTableName="comment"
-                baseColumnNames="author_id"
-                constraintName="fk_comment_author"
+                baseTableName="orders"
+                baseColumnNames="seller_id"
+                constraintName="fk_order_seller"
                 referencedTableName="users"
                 referencedColumnNames="id"/>
-
         <addForeignKeyConstraint
-                baseTableName="comment"
+                baseTableName="orders"
+                baseColumnNames="buyer_id"
+                constraintName="fk_order_buyer"
+                referencedTableName="users"
+                referencedColumnNames="id"/>
+        <addForeignKeyConstraint
+                baseTableName="orders"
                 baseColumnNames="product_id"
-                constraintName="fk_comment_product"
+                constraintName="fk_order_product"
                 referencedTableName="product"
                 referencedColumnNames="id"/>
     </changeSet>

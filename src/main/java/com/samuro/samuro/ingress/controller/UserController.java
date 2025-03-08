@@ -1,4 +1,4 @@
-package com.samuro.samuro.controller;
+package com.samuro.samuro.ingress.controller;
 
 import com.samuro.samuro.dto.UserDTO;
 import com.samuro.samuro.dto.UserRegistrationDTO;
@@ -19,9 +19,7 @@ public class UserController {
 
     @PostMapping
     public ResponseEntity<UserDTO> save(@Valid @RequestBody UserRegistrationDTO userRegistrationDTO) {
-        UserDTO userDTO = service.save(userRegistrationDTO.getUserDTO(),
-                userRegistrationDTO.getLogin(),
-                userRegistrationDTO.getPassword());
+        UserDTO userDTO = service.save(userRegistrationDTO);
         ResponseEntity responseEntity = new ResponseEntity<>(userDTO, HttpStatus.OK);
         return responseEntity;
     }

@@ -2,7 +2,7 @@ package com.samuro.samuro.service.impl;
 
 import com.samuro.samuro.dto.OrderDTO;
 import com.samuro.samuro.mapper.OrderMapper;
-import com.samuro.samuro.repository.OrderRepository;
+import com.samuro.samuro.repository.jpa.OrderRepository;
 import com.samuro.samuro.service.OrderService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

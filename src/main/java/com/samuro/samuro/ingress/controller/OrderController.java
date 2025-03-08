@@ -1,6 +1,7 @@
-package com.samuro.samuro.controller;
+package com.samuro.samuro.ingress.controller;
 
 import com.samuro.samuro.dto.OrderDTO;
+import com.samuro.samuro.producer.KafkaOrderProducer;
 import com.samuro.samuro.service.OrderService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -15,10 +16,13 @@ import java.util.UUID;
 @RequestMapping("/order")
 public class OrderController {
     private final OrderService service;
+    private final KafkaOrderProducer kafkaProducer;
 
     @PostMapping
     public ResponseEntity<OrderDTO> save(@Valid @RequestBody OrderDTO orderDTO) {
-        return new ResponseEntity<>(service.save(orderDTO), HttpStatus.OK);
+        OrderDTO savedOrder = service.save(orderDTO);
+        kafkaProducer.sendMessage(savedOrder);
+        return new ResponseEntity<>(savedOrder, HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")

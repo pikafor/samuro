@@ -1,7 +1,7 @@
-package com.samuro.samuro.controller;
+package com.samuro.samuro.ingress.controller;
 
-import com.samuro.samuro.dto.ProductDTO;
-import com.samuro.samuro.service.ProductService;
+import com.samuro.samuro.dto.CommentDTO;
+import com.samuro.samuro.service.CommentService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -12,13 +12,14 @@ import java.util.UUID;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/product")
-public class ProductController {
-    private final ProductService service;
+@RequestMapping("/comment")
+public class CommentController {
+    private final CommentService service;
+
 
     @PostMapping
-    public ResponseEntity<ProductDTO> save(@Valid @RequestBody ProductDTO productDTO) {
-        return new ResponseEntity<>(service.save(productDTO), HttpStatus.OK);
+    public ResponseEntity<CommentDTO> save(@Valid @RequestBody CommentDTO commentDTO) {
+        return new ResponseEntity<>(service.save(commentDTO), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
@@ -27,7 +28,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProductDTO> getById(@PathVariable UUID id) {
+    public ResponseEntity<CommentDTO> getById(@PathVariable UUID id){
         return new ResponseEntity<>(service.getById(id), HttpStatus.OK);
     }
 }

@@ -1,5 +1,6 @@
 package com.samuro.samuro.entity;
 
+import com.samuro.samuro.dto.enums.UserRole;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -18,4 +19,5 @@ public class User {
     private String photo;
     @Size(min = 3, message = "Минимальое значение - 3")
     private String nickname;
+    private String role;
 }

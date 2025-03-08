@@ -2,7 +2,7 @@ package com.samuro.samuro.service.impl;
 
 import com.samuro.samuro.dto.ProductDTO;
 import com.samuro.samuro.mapper.ProductMapper;
-import com.samuro.samuro.repository.ProductRepository;
+import com.samuro.samuro.repository.jpa.ProductRepository;
 import com.samuro.samuro.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

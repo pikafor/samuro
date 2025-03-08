@@ -1,4 +1,4 @@
-package com.samuro.samuro.repository;
+package com.samuro.samuro.repository.jpa;
 
 import com.samuro.samuro.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;

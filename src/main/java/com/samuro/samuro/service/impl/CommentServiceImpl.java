@@ -2,7 +2,7 @@ package com.samuro.samuro.service.impl;
 
 import com.samuro.samuro.dto.CommentDTO;
 import com.samuro.samuro.mapper.CommentMapper;
-import com.samuro.samuro.repository.CommentRepository;
+import com.samuro.samuro.repository.jpa.CommentRepository;
 import com.samuro.samuro.service.CommentService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.samuro.samuro.repository;
+package com.samuro.samuro.repository.jpa;
 
 import com.samuro.samuro.entity.Comment;
 import org.springframework.data.jpa.repository.JpaRepository;
